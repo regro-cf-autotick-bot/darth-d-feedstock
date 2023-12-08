@@ -17,12 +17,17 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python >=3.7
+    - setuptools
   run:
+    - napari
+    - napari-plugin-engine  # Imported but not listed as requirement
+    - napari-tools-menu     # Imported but not listed as requirement
     - numpy
-    - openai
+    - openai >=1.2.0
     - pillow
-    - python >=3.8
+    - python >=3.7
+    - scikit-image          # Imported but not listed as requirement
     - stackview >=0.7.1
 
 test:
