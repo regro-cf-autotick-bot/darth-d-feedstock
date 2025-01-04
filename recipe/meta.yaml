@@ -6,18 +6,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/darth-d-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/darth-d-{{ version }}.tar.gz
   sha256: 4003422b4315c98406cd8b9b4e02dd2e6dd894eabec1e93325d797561f95e18f
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools
   run:
     - napari
@@ -26,7 +26,7 @@ requirements:
     - numpy
     - openai >=1.2.0
     - pillow
-    - python >=3.7
+    - python >={{ python_min }}
     - scikit-image          # Imported but not listed as requirement
     - stackview >=0.7.1
 
@@ -38,6 +38,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/darth-d
